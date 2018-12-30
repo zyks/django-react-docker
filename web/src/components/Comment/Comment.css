@@ -1,0 +1,21 @@
+.comment {
+    margin-bottom: 1.5em;
+    color: #555;
+}
+
+.commentHeader {
+    font-size: 0.8em;
+}
+
+.commentAuthor {
+    font-weight: 450;
+}
+
+.commentTime {
+    float: right;
+}
+
+.commentContent {
+    font-size: 1em;
+    color: #333;
+}

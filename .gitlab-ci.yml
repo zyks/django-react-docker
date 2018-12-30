@@ -1,0 +1,45 @@
+stages:
+  - build
+  - linter
+  - tests
+  - clean
+
+
+before_script:
+  - echo "-------------------------"
+  - date "+DATE:%Y-%m-%d%nTIME:%H:%M:%S"
+  - git --version
+  - pwd -P
+  - docker-compose --version
+  - echo "-------------------------"
+
+
+build-and-run-containers:
+  stage: build
+  script:
+    - docker-compose build
+    - docker-compose up -d
+
+
+check_codestyle:
+  stage: linter
+  script:
+    - docker-compose exec -T web_app python -m pytest -v /code/main/ --codestyle
+
+check_static_types:
+  stage: linter
+  script:
+    - docker-compose exec -T web_app mypy /code/main/ --ignore-missing-imports
+
+
+run_backend_unittests:
+  stage: tests
+  script:
+    - docker-compose exec -T web_app python -m pytest -s /code/main/
+
+
+remove_containers:
+  stage: clean
+  script:
+    - docker-compose down
+  when: always

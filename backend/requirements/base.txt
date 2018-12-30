@@ -1,0 +1,5 @@
+Django==2.0.8
+djangorestframework==3.8.2
+psycopg2-binary==2.7.5
+django-environ==0.4.5
+faker==1.0.1
