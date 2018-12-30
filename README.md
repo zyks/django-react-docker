@@ -103,8 +103,8 @@ $ docker-compose up
 ```
  
 ### Troubleshooting
-When Celery Beat process refuses to start (usually returns `exit code 73`) try to remove its `.pid` file from `backend/` directory. 
+When Celery Beat process refuses to start (usually returns `exit code 73`) try to remove its `.pid` file from `/code/` directory inside container.
 ```
-$ rm -f backend/celerybeat.pid
+$ docker-compose exec -T celery rm -f /code/celerybeat.pid
 ```
-Source code directory is mounted with a volume by default and the `.pid` file stays in repository when the process exits unexpectedly. You could also try to rebuild Celery image `docker-compose build celery` - it removes the `celerybeat.pid` in its `Dockerfile`.
+The `.pid` file stays in repository when the process exits unexpectedly. You could also try to rebuild Celery image `docker-compose build celery` - it removes the `celerybeat.pid` in its `Dockerfile`.

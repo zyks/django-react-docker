@@ -10,7 +10,7 @@ RUN pip install flower==0.9.2
 
 RUN mkdir -p /var/logs/ && touch /var/logs/celery.log
 RUN mkdir -p /var/log/supervisor
-RUN rm /code/celerybeat.pid
+RUN rm -f /code/celerybeat.pid
 
 COPY config/* /code/config/celery/
 COPY supervisor/supervisord.conf /etc/supervisor/

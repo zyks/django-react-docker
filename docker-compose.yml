@@ -20,8 +20,8 @@ services:
   backend:
     build: backend
     image: backend_image
-    volumes:
-      - ./backend:/code
+    # volumes:
+    #   - ./backend:/code
     hostname: "backend_app"
     depends_on:
       - database
@@ -51,9 +51,9 @@ services:
 
   celery:
     build: services/celery
-    volumes:
-      - ./backend:/code
-      - ./services/celery/config:/code/config/celery/
+    # volumes:
+    #   - ./backend:/code
+    #   - ./services/celery/config:/code/config/celery/
     hostname: "celery"
     working_dir: /code
     networks:
