@@ -5,9 +5,11 @@ Repository contains sample Django, Celery and React setup with docker compose, w
 ### Django
 Django application serving articles and comments data. It uses [rest-framework](https://www.django-rest-framework.org/) to create RESTful API and [pytest-django](https://pytest-django.readthedocs.io/en/latest/) as its test runner. Data is produced by periodic tasks using [faker](https://faker.readthedocs.io/en/latest/index.html) library to create fake Articles and Comments. Django Admin panel is added by default and is available under `/admin/` URL.
 
-![Admin](media/admin.png?raw=true "")
+<p align="center">
+ <img src="media/admin.png" width="75%"/>
+</p>
 
-Static files for Django Admin panel are collected when the image is build. Application in  production environment runs with uWSGI - 2 processes and 2 threads each. Environment is configured by variables stored in `config/local.env` file (see [django-environ](https://django-environ.readthedocs.io/en/latest/) and [12factor](https://www.12factor.net/)). API URLs to fetch Articles and Comments are respectivelly `/api/main/article/` and `/api/main/comment/`.
+Static files for Django Admin panel are collected when the image is build. Application in  production environment runs with uWSGI - 2 processes and 2 threads each. Environment is configured by variables stored in `config/local.env` file (see [django-environ](https://django-environ.readthedocs.io/en/latest/) and [12factor](https://www.12factor.net/)). API URLs to fetch Articles and Comments are respectively `/api/main/article/` and `/api/main/comment/`.
 
 Run `pytest` in `backend/` directory to start test session.
 ```
@@ -33,13 +35,18 @@ Built on top of `backend_image` (Django), uses source code and installed depende
 - Celery Flower - runs [Flower](https://flower.readthedocs.io/en/latest/) application used to monitor tasks executed by Celery Worker, available
 under `/flower/` URL
 
-![Flower](media/flower.png?raw=true "")
+<p align="center">
+ <img src="media/flower.png" width="75%"/>
+</p>
 
 
 ### React
 Set up with [create-react-app](https://github.com/facebook/create-react-app) starter project, consists of few React components for rendering articles and comments data fetched from backend API. Every 20 seconds new request is send and components' states are updated with new data. Application available under root `/` URL.
 
-![ReactApp](media/react.png?raw=true "")
+<p align="center">
+ <img src="media/react.png" width="75%"/>
+</p>
+
 
 Source code and static files are bundled when the Docker image is build. Run `npm test` in `web/` directory to start test session.
 ```
@@ -70,7 +77,10 @@ to create `web_app_database` database and `postgres` role when the image is buil
 ### RabbitMQ
 RabbitMQ is used to queue periodic task scheduled by Celery Beat process. Tasks from `celerybeat_periodic` queue are consumed by Celery Worker process. Image `rabbitmq:3.6-management-alpine` provides service with enabled management panel, which is available under `/rabbitmq/` URL. Default credentials are username: `guest` and password: `guest`.
 
-![RabbitMQ](media/rabbitmq.png?raw=true "")
+<p align="center">
+ <img src="media/rabbitmq.png" width="75%"/>
+</p>
+
 
 RabbitMQ can be used as a message broker for all services.
 
