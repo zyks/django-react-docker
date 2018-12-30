@@ -60,7 +60,6 @@ services:
       - db_network
       - app_network
     depends_on:
-      - database
       - backend
       - rabbitmq
 
