@@ -1,5 +1,5 @@
-## production-like Django, Celery and React app
-Repository contains sample Django, Celery and React setup with docker compose, which can be used to easily start a new project and tune its production environment settings.
+## Docker compose for Django, Celery and React app
+Repository contains sample Django, Celery and React setup with docker compose, which can be used to easily start a new project and tune its environment settings.
 
 
 ### Django
